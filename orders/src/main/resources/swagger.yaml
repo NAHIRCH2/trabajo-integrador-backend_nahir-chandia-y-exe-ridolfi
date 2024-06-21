@@ -1,28 +1,22 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Nuestra primera api crud creada por java/Spring",
-    "description": "Esta api te pemite administrar productos",
+    "title": "Api CRUD ORDENES",
+    "description": "Esta api te pemite administrar Ordenes",
     "contact": {
-      "name": "Exequiel Ridolfi",
+      "name": "Exequiel Ridolfi y Nahir Chandia",
       "email": "ridolfiexe17@gmail.com"
     },
     "version": "1"
   },
-  "servers": [
-    {
-      "url": "http://localhost:3000",
-      "description": "Generated server url"
-    }
-  ],
   "paths": {
-    "/api/products/{id}": {
+    "/api/charge/{id}": {
       "put": {
         "tags": [
-          "product-controller"
+          "charge-controller"
         ],
-        "summary": "Este endpoint se encargar de modificar un producto",
-        "operationId": "modifyProduct",
+        "summary": "Este endpoint se encargar de modificar una orden",
+        "operationId": "updateCharge",
         "parameters": [
           {
             "name": "id",
@@ -38,7 +32,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/Orders"
               }
             }
           },
@@ -52,11 +46,11 @@
             "description": "error de parametros"
           },
           "200": {
-            "description": "Producto actualizado con exito",
+            "description": "Orden actualizado con exito",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -65,10 +59,10 @@
       },
       "delete": {
         "tags": [
-          "product-controller"
+          "charge-controller"
         ],
-        "summary": "Este endpoint se encargar de borrar un producto",
-        "operationId": "deleteProduct",
+        "summary": "Este endpoint se encargar de borrar una orden",
+        "operationId": "deleteChange",
         "parameters": [
           {
             "name": "id",
@@ -88,11 +82,11 @@
             "description": "error de parametros"
           },
           "200": {
-            "description": "Producto borrado con exito",
+            "description": "Orden borrado con exito",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -100,13 +94,13 @@
         }
       }
     },
-    "/api/products": {
+    "/api/charge": {
       "get": {
         "tags": [
-          "product-controller"
+          "charge-controller"
         ],
-        "summary": "Este endpoint se encargar de obtener todos los productos",
-        "operationId": "getProducts",
+        "summary": "Este endpoint se encargar de obtener todos las ordenes",
+        "operationId": "getOrders",
         "responses": {
           "200": {
             "description": "OK",
@@ -115,7 +109,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Product"
+                    "$ref": "#/components/schemas/Orders"
                   }
                 }
               }
@@ -125,15 +119,15 @@
       },
       "post": {
         "tags": [
-          "product-controller"
+          "charge-controller"
         ],
-        "summary": "Este endpoint se encargar de crear un producto",
-        "operationId": "newProduct",
+        "summary": "Este endpoint se encargar de crear una orden",
+        "operationId": "newCharge",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Product"
+                "$ref": "#/components/schemas/Orders"
               }
             }
           },
@@ -144,11 +138,11 @@
             "description": "error de  la respuesta"
           },
           "200": {
-            "description": "Producto creado con exito",
+            "description": "orden creado con exito",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Product"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -162,12 +156,12 @@
   },
   "components": {
     "schemas": {
-      "Product": {
+      "Change": {
         "required": [
-          "description",
-          "name",
-          "price",
-          "sku"
+          "sku",
+          "customer",
+          "deliveryAddress",
+          "amount"
         ],
         "type": "object",
         "properties": {
@@ -178,20 +172,16 @@
           "sku": {
             "type": "string"
           },
-          "name": {
+          "customer": {
             "type": "string"
           },
-          "description": {
+          "deliveryAddress": {
             "type": "string"
           },
-          "price": {
+          "amount": {
             "minimum": 0,
             "exclusiveMinimum": false,
-            "type": "number",
-            "format": "double"
-          },
-          "status": {
-            "type": "boolean"
+            "type": "string",
           }
         }
       }

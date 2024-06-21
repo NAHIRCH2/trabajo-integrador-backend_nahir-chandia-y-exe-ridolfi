@@ -45,4 +45,8 @@ public class ProductService {
             return new ResponseEntity<>("producto no encotrado mediante el id ", HttpStatus.NOT_FOUND);
         }
     }
-}
+    public List<String> getSKus() {
+   return productRepository.findAll().stream()
+          .map(Product::getSku).toList();
+    }
+    }

@@ -2,11 +2,6 @@ package com.ucc.crudservice.controller;
 
 import com.ucc.crudservice.model.Product;
 import com.ucc.crudservice.service.ProductService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.*;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -22,7 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("api/products")
 @RequiredArgsConstructor
 public class ProductController {
-    private  final   ProductService productService;
+    private  final ProductService productService;
     // METODO  para obtener los productos
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -56,6 +51,9 @@ public class ProductController {
 
         return this.productService.modifyProduct(id,product);
     }
+    @GetMapping("/sku")
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> getSku() { return  this.productService.getSKus();}
 
 }
 

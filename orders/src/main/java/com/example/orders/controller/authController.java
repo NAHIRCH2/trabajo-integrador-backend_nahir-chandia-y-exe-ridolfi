@@ -1,4 +1,5 @@
 package com.example.orders.controller;
+
 import com.example.orders.model.AuthenticationReq;
 import com.example.orders.model.TokenInfo;
 import com.example.orders.service.JwtUtilService;
@@ -8,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+
+@RestController
+@RequestMapping
 public class authController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -38,4 +43,5 @@ public class authController {
 
         return ResponseEntity.ok(new TokenInfo(jwt));
     }
+
 }

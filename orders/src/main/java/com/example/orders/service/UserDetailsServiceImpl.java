@@ -27,16 +27,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   public record Usuario(String username, String password, Set<String> roles) {};
 
   public static Usuario getById(String username) {
-    // "1234" => [BCrypt] => "$2a$12$fmtI5P9M4f0rYkSWOWXKHOqCf1VlZMYCKMZHN7G3T5cPqAXs7SiXe"
-    var password = "$2a$12$fmtI5P9M4f0rYkSWOWXKHOqCf1VlZMYCKMZHN7G3T5cPqAXs7SiXe";
-
+    // "secreto" => [BCrypt] => "$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq"
+    var password = "$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq";
 
     Usuario admin = new Usuario(
             "admin",
             password,
             Set.of("ADMIN")
     );
-    var usuarios = List.of(admin);
+    var usuarios = List.of( admin);
 
     return usuarios
             .stream()

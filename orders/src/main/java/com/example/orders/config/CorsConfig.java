@@ -1,6 +1,4 @@
 package com.example.orders.config;
-
-
 import java.util.Arrays;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,7 @@ public class CorsConfig {
   @Bean
   CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:3001"));
+    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:3000"));
     configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
